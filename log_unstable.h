@@ -5,7 +5,7 @@
 #include "logger.h"
 #include "util.h"
 
-using namesapce raftpb;
+using namespace raftpb;
 
 struct unstable 
 {

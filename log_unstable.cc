@@ -36,7 +36,7 @@ bool unstable::maybeLastIndex(uint64_t *last)
 
 // maybeTerm returns the term of the entry at index i, if there
 // is any.
-bool unstableLog::maybeTerm(uint64_t i, uint64_t *term) 
+bool unstable::maybeTerm(uint64_t i, uint64_t *term) 
 {
     *term = 0;
     if (i < offset_) 

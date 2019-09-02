@@ -54,3 +54,7 @@ void limitSize(EntryVec* ents, uint64_t maxSize)
 
 }
 
+const char* GetErrorString(int err) 
+{
+    return "";
+}

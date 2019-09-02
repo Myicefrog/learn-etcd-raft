@@ -16,11 +16,11 @@ public:
     ~MemoryStorage();
 
     virtual int InitialState(HardState* hs, ConfState* cs);
-    virtual int Entries(uint64_t lo, uint64_t hi, uint64_t maxSize, vector<Entry> *entries)
-    virtual uint64_t Term(uint64_t i);
-    virtual uint64_t LastIndex();
-    virtual uint64_t FirstIndex();
-    virtual Snapshot* Snapshot();
+    virtual int Entries(uint64_t lo, uint64_t hi, uint64_t maxSize, vector<Entry> *entries);
+    virtual int Term(uint64_t i, uint64_t *term);
+    virtual int LastIndex(uint64_t *index);
+    virtual int FirstIndex(uint64_t *index);
+    //virtual Snapshot* Snapshot();
 
     int SetHardState(const HardState& );
     int ApplySnapshot(const Snapshot& snapshot);
@@ -28,7 +28,7 @@ public:
     int Compact(uint64_t compactIndex);
     int Append(const EntryVec& entries);
 
-    //int GetSnapshot(Snapshot **snapshot);
+    int GetSnapshot(Snapshot **snapshot);
 
 private:
 

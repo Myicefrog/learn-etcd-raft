@@ -26,7 +26,7 @@ int MemoryStorage::SetHardState(const HardState& hs)
     return OK;
 }
 
-int Entries(uint64_t lo, uint64_t hi, uint64_t maxSize, vector<Entry> *entries)
+int MemoryStorage::Entries(uint64_t lo, uint64_t hi, uint64_t maxSize, vector<Entry> *entries)
 {
 
     Mutex mutex(&locker_);
@@ -51,15 +51,15 @@ int Entries(uint64_t lo, uint64_t hi, uint64_t maxSize, vector<Entry> *entries)
     {
        entries->push_back(entries_[i]);
     }
-    limitSize(maxSize, entries);
+    limitSize(entries, maxSize);
     return OK;
 
 }
 
-uint64_t MemoryStorage::Term(uint64_t i) 
+int MemoryStorage::Term(uint64_t i, uint64_t *term) 
 {
     Mutex mutex(&locker_);
-    uint64_t term = 0;
+    *term = 0;
     uint64_t offset = entries_[0].index();
     if (i < offset) 
     {
@@ -69,14 +69,15 @@ uint64_t MemoryStorage::Term(uint64_t i)
     {
        return ErrUnavailable;
     }
-    term = entries_[i - offset].term();
-    return term;
+    *term = entries_[i - offset].term();
+    return OK;
 }
 
-uint64_t MemoryStorage::LastIndex() 
+int MemoryStorage::LastIndex(uint64_t *index) 
 {
     Mutex mutex(&locker_);
-    return lastIndex();
+    *index = lastIndex(); 
+    return OK;
 }
 
 
@@ -85,10 +86,11 @@ uint64_t MemoryStorage::lastIndex()
   return entries_[0].index() + entries_.size() - 1;
 }
 
-uint64_t MemoryStorage::FirstIndex() 
+int MemoryStorage::FirstIndex(uint64_t *index) 
 {
     Mutex mutex(&locker_);
-    return firstIndex();
+    *index = firstIndex();
+    return OK;
 }
 
 uint64_t MemoryStorage::firstIndex() 
@@ -96,18 +98,20 @@ uint64_t MemoryStorage::firstIndex()
   return entries_[0].index() + 1;
 }
 
+/*
 Snapshot*  MemoryStorage::Snapshot() 
 {
   Mutex mutex(&locker_);
   return snapShot_;
 }
+*/
 
 int MemoryStorage::ApplySnapshot(const Snapshot& snapshot) 
 {
     Mutex mutex(&locker_);
 
   //handle check for old snapshot being applied
-    uint64_t msIndex = snapShot_->metadata().index();
+    uint64_t index = snapShot_->metadata().index();
     uint64_t snapIndex = snapshot.metadata().index();
     if (index >= snapIndex) 
     {
@@ -228,5 +232,12 @@ int MemoryStorage::Append(const EntryVec& entries) {
 
     logger_->Panicf(__FILE__, __LINE__, "missing log entry [last: %llu, append at: %llu]",
     lastIndex(), appendEntries[0].index());
+    return OK;
+}
+
+int MemoryStorage::GetSnapshot(Snapshot **snapshot) 
+{
+    Mutex mutex(&locker_);
+    *snapshot = snapShot_;
     return OK;
 }
