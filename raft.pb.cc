@@ -299,7 +299,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfState, voters_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfState, nodes_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfState, learners_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfState, voters_outgoing_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfState, learners_next_),
@@ -316,7 +316,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfChange, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfChange, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfChange, node_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfChange, nodeid_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::raftpb::ConfChange, context_),
   1,
   3,
@@ -402,37 +402,37 @@ void AddDescriptorsImpl() {
       "ot\030\t \001(\0132\020.raftpb.Snapshot\022\016\n\006reject\030\n \001"
       "(\010\022\022\n\nrejectHint\030\013 \001(\004\022\017\n\007context\030\014 \001(\014\""
       "7\n\tHardState\022\014\n\004term\030\001 \001(\004\022\014\n\004vote\030\002 \001(\004"
-      "\022\016\n\006commit\030\003 \001(\004\"q\n\tConfState\022\016\n\006voters\030"
-      "\001 \003(\004\022\020\n\010learners\030\002 \003(\004\022\027\n\017voters_outgoi"
-      "ng\030\003 \003(\004\022\025\n\rlearners_next\030\004 \003(\004\022\022\n\nauto_"
-      "leave\030\005 \001(\010\"`\n\nConfChange\022\n\n\002id\030\001 \001(\004\022$\n"
-      "\004type\030\002 \001(\0162\026.raftpb.ConfChangeType\022\017\n\007n"
-      "ode_id\030\003 \001(\004\022\017\n\007context\030\004 \001(\014\"I\n\020ConfCha"
-      "ngeSingle\022$\n\004type\030\001 \001(\0162\026.raftpb.ConfCha"
-      "ngeType\022\017\n\007node_id\030\002 \001(\004\"|\n\014ConfChangeV2"
-      "\0220\n\ntransition\030\001 \001(\0162\034.raftpb.ConfChange"
-      "Transition\022)\n\007changes\030\002 \003(\0132\030.raftpb.Con"
-      "fChangeSingle\022\017\n\007context\030\003 \001(\014*H\n\tEntryT"
-      "ype\022\017\n\013EntryNormal\020\000\022\023\n\017EntryConfChange\020"
-      "\001\022\025\n\021EntryConfChangeV2\020\002*\323\002\n\013MessageType"
-      "\022\n\n\006MsgHup\020\000\022\013\n\007MsgBeat\020\001\022\013\n\007MsgProp\020\002\022\n"
-      "\n\006MsgApp\020\003\022\016\n\nMsgAppResp\020\004\022\013\n\007MsgVote\020\005\022"
-      "\017\n\013MsgVoteResp\020\006\022\013\n\007MsgSnap\020\007\022\020\n\014MsgHear"
-      "tbeat\020\010\022\024\n\020MsgHeartbeatResp\020\t\022\022\n\016MsgUnre"
-      "achable\020\n\022\021\n\rMsgSnapStatus\020\013\022\022\n\016MsgCheck"
-      "Quorum\020\014\022\025\n\021MsgTransferLeader\020\r\022\021\n\rMsgTi"
-      "meoutNow\020\016\022\020\n\014MsgReadIndex\020\017\022\024\n\020MsgReadI"
-      "ndexResp\020\020\022\016\n\nMsgPreVote\020\021\022\022\n\016MsgPreVote"
-      "Resp\020\022*\202\001\n\024ConfChangeTransition\022\034\n\030ConfC"
-      "hangeTransitionAuto\020\000\022%\n!ConfChangeTrans"
-      "itionJointImplicit\020\001\022%\n!ConfChangeTransi"
-      "tionJointExplicit\020\002*y\n\016ConfChangeType\022\025\n"
-      "\021ConfChangeAddNode\020\000\022\030\n\024ConfChangeRemove"
-      "Node\020\001\022\030\n\024ConfChangeUpdateNode\020\002\022\034\n\030Conf"
-      "ChangeAddLearnerNode\020\003"
+      "\022\016\n\006commit\030\003 \001(\004\"p\n\tConfState\022\r\n\005nodes\030\001"
+      " \003(\004\022\020\n\010learners\030\002 \003(\004\022\027\n\017voters_outgoin"
+      "g\030\003 \003(\004\022\025\n\rlearners_next\030\004 \003(\004\022\022\n\nauto_l"
+      "eave\030\005 \001(\010\"_\n\nConfChange\022\n\n\002id\030\001 \001(\004\022$\n\004"
+      "type\030\002 \001(\0162\026.raftpb.ConfChangeType\022\016\n\006no"
+      "deid\030\003 \001(\004\022\017\n\007context\030\004 \001(\014\"I\n\020ConfChang"
+      "eSingle\022$\n\004type\030\001 \001(\0162\026.raftpb.ConfChang"
+      "eType\022\017\n\007node_id\030\002 \001(\004\"|\n\014ConfChangeV2\0220"
+      "\n\ntransition\030\001 \001(\0162\034.raftpb.ConfChangeTr"
+      "ansition\022)\n\007changes\030\002 \003(\0132\030.raftpb.ConfC"
+      "hangeSingle\022\017\n\007context\030\003 \001(\014*H\n\tEntryTyp"
+      "e\022\017\n\013EntryNormal\020\000\022\023\n\017EntryConfChange\020\001\022"
+      "\025\n\021EntryConfChangeV2\020\002*\323\002\n\013MessageType\022\n"
+      "\n\006MsgHup\020\000\022\013\n\007MsgBeat\020\001\022\013\n\007MsgProp\020\002\022\n\n\006"
+      "MsgApp\020\003\022\016\n\nMsgAppResp\020\004\022\013\n\007MsgVote\020\005\022\017\n"
+      "\013MsgVoteResp\020\006\022\013\n\007MsgSnap\020\007\022\020\n\014MsgHeartb"
+      "eat\020\010\022\024\n\020MsgHeartbeatResp\020\t\022\022\n\016MsgUnreac"
+      "hable\020\n\022\021\n\rMsgSnapStatus\020\013\022\022\n\016MsgCheckQu"
+      "orum\020\014\022\025\n\021MsgTransferLeader\020\r\022\021\n\rMsgTime"
+      "outNow\020\016\022\020\n\014MsgReadIndex\020\017\022\024\n\020MsgReadInd"
+      "exResp\020\020\022\016\n\nMsgPreVote\020\021\022\022\n\016MsgPreVoteRe"
+      "sp\020\022*\202\001\n\024ConfChangeTransition\022\034\n\030ConfCha"
+      "ngeTransitionAuto\020\000\022%\n!ConfChangeTransit"
+      "ionJointImplicit\020\001\022%\n!ConfChangeTransiti"
+      "onJointExplicit\020\002*y\n\016ConfChangeType\022\025\n\021C"
+      "onfChangeAddNode\020\000\022\030\n\024ConfChangeRemoveNo"
+      "de\020\001\022\030\n\024ConfChangeUpdateNode\020\002\022\034\n\030ConfCh"
+      "angeAddLearnerNode\020\003"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1662);
+      descriptor, 1660);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "raft.proto", &protobuf_RegisterTypes);
 }
@@ -2530,7 +2530,7 @@ void HardState::InternalSwap(HardState* other) {
 void ConfState::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ConfState::kVotersFieldNumber;
+const int ConfState::kNodesFieldNumber;
 const int ConfState::kLearnersFieldNumber;
 const int ConfState::kVotersOutgoingFieldNumber;
 const int ConfState::kLearnersNextFieldNumber;
@@ -2548,7 +2548,7 @@ ConfState::ConfState(const ConfState& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
-      voters_(from.voters_),
+      nodes_(from.nodes_),
       learners_(from.learners_),
       voters_outgoing_(from.voters_outgoing_),
       learners_next_(from.learners_next_) {
@@ -2589,7 +2589,7 @@ void ConfState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  voters_.Clear();
+  nodes_.Clear();
   learners_.Clear();
   voters_outgoing_.Clear();
   learners_next_.Clear();
@@ -2608,19 +2608,19 @@ bool ConfState::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated uint64 voters = 1;
+      // repeated uint64 nodes = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 1, 8u, input, this->mutable_voters())));
+                 1, 8u, input, this->mutable_nodes())));
         } else if (
             static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, this->mutable_voters())));
+                 input, this->mutable_nodes())));
         } else {
           goto handle_unusual;
         }
@@ -2724,10 +2724,10 @@ void ConfState::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 voters = 1;
-  for (int i = 0, n = this->voters_size(); i < n; i++) {
+  // repeated uint64 nodes = 1;
+  for (int i = 0, n = this->nodes_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(
-      1, this->voters(i), output);
+      1, this->nodes(i), output);
   }
 
   // repeated uint64 learners = 2;
@@ -2768,9 +2768,9 @@ void ConfState::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated uint64 voters = 1;
+  // repeated uint64 nodes = 1;
   target = ::google::protobuf::internal::WireFormatLite::
-    WriteUInt64ToArray(1, this->voters_, target);
+    WriteUInt64ToArray(1, this->nodes_, target);
 
   // repeated uint64 learners = 2;
   target = ::google::protobuf::internal::WireFormatLite::
@@ -2807,12 +2807,12 @@ size_t ConfState::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  // repeated uint64 voters = 1;
+  // repeated uint64 nodes = 1;
   {
     size_t data_size = ::google::protobuf::internal::WireFormatLite::
-      UInt64Size(this->voters_);
+      UInt64Size(this->nodes_);
     total_size += 1 *
-                  ::google::protobuf::internal::FromIntSize(this->voters_size());
+                  ::google::protobuf::internal::FromIntSize(this->nodes_size());
     total_size += data_size;
   }
 
@@ -2875,7 +2875,7 @@ void ConfState::MergeFrom(const ConfState& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  voters_.MergeFrom(from.voters_);
+  nodes_.MergeFrom(from.nodes_);
   learners_.MergeFrom(from.learners_);
   voters_outgoing_.MergeFrom(from.voters_outgoing_);
   learners_next_.MergeFrom(from.learners_next_);
@@ -2908,7 +2908,7 @@ void ConfState::Swap(ConfState* other) {
 }
 void ConfState::InternalSwap(ConfState* other) {
   using std::swap;
-  voters_.InternalSwap(&other->voters_);
+  nodes_.InternalSwap(&other->nodes_);
   learners_.InternalSwap(&other->learners_);
   voters_outgoing_.InternalSwap(&other->voters_outgoing_);
   learners_next_.InternalSwap(&other->learners_next_);
@@ -2930,7 +2930,7 @@ void ConfChange::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int ConfChange::kIdFieldNumber;
 const int ConfChange::kTypeFieldNumber;
-const int ConfChange::kNodeIdFieldNumber;
+const int ConfChange::kNodeidFieldNumber;
 const int ConfChange::kContextFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -3049,14 +3049,14 @@ bool ConfChange::MergePartialFromCodedStream(
         break;
       }
 
-      // optional uint64 node_id = 3;
+      // optional uint64 nodeid = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          set_has_node_id();
+          set_has_nodeid();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &node_id_)));
+                 input, &nodeid_)));
         } else {
           goto handle_unusual;
         }
@@ -3113,9 +3113,9 @@ void ConfChange::SerializeWithCachedSizes(
       2, this->type(), output);
   }
 
-  // optional uint64 node_id = 3;
+  // optional uint64 nodeid = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->node_id(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->nodeid(), output);
   }
 
   // optional bytes context = 4;
@@ -3150,9 +3150,9 @@ void ConfChange::SerializeWithCachedSizes(
       2, this->type(), target);
   }
 
-  // optional uint64 node_id = 3;
+  // optional uint64 nodeid = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->node_id(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->nodeid(), target);
   }
 
   // optional bytes context = 4;
@@ -3194,11 +3194,11 @@ size_t ConfChange::ByteSizeLong() const {
           this->id());
     }
 
-    // optional uint64 node_id = 3;
-    if (has_node_id()) {
+    // optional uint64 nodeid = 3;
+    if (has_nodeid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt64Size(
-          this->node_id());
+          this->nodeid());
     }
 
     // optional .raftpb.ConfChangeType type = 2;
@@ -3245,7 +3245,7 @@ void ConfChange::MergeFrom(const ConfChange& from) {
       id_ = from.id_;
     }
     if (cached_has_bits & 0x00000004u) {
-      node_id_ = from.node_id_;
+      nodeid_ = from.nodeid_;
     }
     if (cached_has_bits & 0x00000008u) {
       type_ = from.type_;
@@ -3281,7 +3281,7 @@ void ConfChange::InternalSwap(ConfChange* other) {
   context_.Swap(&other->context_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(id_, other->id_);
-  swap(node_id_, other->node_id_);
+  swap(nodeid_, other->nodeid_);
   swap(type_, other->type_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);

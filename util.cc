@@ -2,33 +2,53 @@
 #include <iostream>
 #include "util.h"
 
-bool IsLocalMsg(const MessageType msgt)
+bool isHardStateEqual(const HardState& h1, const HardState& h2) 
+{
+    return h1.term() == h2.term() &&
+           h1.vote() == h2.vote() &&
+           h1.commit() == h2.commit();
+}
+
+bool isSoftStateEqual(const SoftState& s1, const SoftState& s2) 
+{
+    if (s1.leader != s2.leader) 
+    {
+        return false;
+    }
+
+    return s1.state == s2.state;
+}
+
+bool isEmptySnapshot(const Snapshot* snapshot) 
+{
+    if (snapshot == NULL) 
+    {
+        return true;
+    }
+    return snapshot->metadata().index() == 0;
+}
+
+bool isLoaclMessage(const MessageType msgt)
 {
     return (msgt == MsgHup || msgt == MsgBeat || msgt == MsgUnreachable
         || msgt == MsgSnapStatus
         || msgt == MsgCheckQuorum);
 }
 
-bool IsResponseMsg(const MessageType msgt)
+bool isResponseMessage(const MessageType msgt)
 {
     return (msgt == MsgAppResp || msgt == MsgVoteResp || msgt == MsgHeartbeatResp  
         || msgt == MsgUnreachable    
         || msgt == MsgPreVoteResp);
 }
 
-MessageType voteRespMsgType(const MessageType msgt)
+MessageType voteRespMsgType(int t)
 {
-    switch (msgt)
+    if (t == MsgVote) 
     {
-        case MsgVote:
-            return MsgVoteResp;
-        case MsgPreVote:
-            return MsgPreVoteResp;
-        default:
-            cout<<"not a vote message"<<endl;
-            return MsgPreVoteResp;
+        return MsgVoteResp;
     }
-
+    return MsgPreVoteResp;
 }
 
 void limitSize(EntryVec* ents, uint64_t maxSize)
@@ -58,3 +78,17 @@ const char* GetErrorString(int err)
 {
     return "";
 }
+
+string joinStrings(const vector<string>& strs, const string &sep) {
+  string ret = "";
+  size_t i;
+  for (i = 0; i < strs.size(); ++i) {
+    if (ret.length() > 0) {
+      ret += sep;
+    }
+    ret += strs[i];
+  }
+
+  return ret;
+}
+

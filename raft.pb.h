@@ -1085,17 +1085,17 @@ class ConfState : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // repeated uint64 voters = 1;
-  int voters_size() const;
-  void clear_voters();
-  static const int kVotersFieldNumber = 1;
-  ::google::protobuf::uint64 voters(int index) const;
-  void set_voters(int index, ::google::protobuf::uint64 value);
-  void add_voters(::google::protobuf::uint64 value);
+  // repeated uint64 nodes = 1;
+  int nodes_size() const;
+  void clear_nodes();
+  static const int kNodesFieldNumber = 1;
+  ::google::protobuf::uint64 nodes(int index) const;
+  void set_nodes(int index, ::google::protobuf::uint64 value);
+  void add_nodes(::google::protobuf::uint64 value);
   const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-      voters() const;
+      nodes() const;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-      mutable_voters();
+      mutable_nodes();
 
   // repeated uint64 learners = 2;
   int learners_size() const;
@@ -1148,7 +1148,7 @@ class ConfState : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > voters_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > nodes_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > learners_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > voters_outgoing_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > learners_next_;
@@ -1273,12 +1273,12 @@ class ConfChange : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::uint64 id() const;
   void set_id(::google::protobuf::uint64 value);
 
-  // optional uint64 node_id = 3;
-  bool has_node_id() const;
-  void clear_node_id();
-  static const int kNodeIdFieldNumber = 3;
-  ::google::protobuf::uint64 node_id() const;
-  void set_node_id(::google::protobuf::uint64 value);
+  // optional uint64 nodeid = 3;
+  bool has_nodeid() const;
+  void clear_nodeid();
+  static const int kNodeidFieldNumber = 3;
+  ::google::protobuf::uint64 nodeid() const;
+  void set_nodeid(::google::protobuf::uint64 value);
 
   // optional .raftpb.ConfChangeType type = 2;
   bool has_type() const;
@@ -1293,8 +1293,8 @@ class ConfChange : public ::google::protobuf::Message /* @@protoc_insertion_poin
   void clear_has_id();
   void set_has_type();
   void clear_has_type();
-  void set_has_node_id();
-  void clear_has_node_id();
+  void set_has_nodeid();
+  void clear_has_nodeid();
   void set_has_context();
   void clear_has_context();
 
@@ -1303,7 +1303,7 @@ class ConfChange : public ::google::protobuf::Message /* @@protoc_insertion_poin
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr context_;
   ::google::protobuf::uint64 id_;
-  ::google::protobuf::uint64 node_id_;
+  ::google::protobuf::uint64 nodeid_;
   int type_;
   friend struct ::protobuf_raft_2eproto::TableStruct;
 };
@@ -2419,34 +2419,34 @@ inline void HardState::set_commit(::google::protobuf::uint64 value) {
 
 // ConfState
 
-// repeated uint64 voters = 1;
-inline int ConfState::voters_size() const {
-  return voters_.size();
+// repeated uint64 nodes = 1;
+inline int ConfState::nodes_size() const {
+  return nodes_.size();
 }
-inline void ConfState::clear_voters() {
-  voters_.Clear();
+inline void ConfState::clear_nodes() {
+  nodes_.Clear();
 }
-inline ::google::protobuf::uint64 ConfState::voters(int index) const {
-  // @@protoc_insertion_point(field_get:raftpb.ConfState.voters)
-  return voters_.Get(index);
+inline ::google::protobuf::uint64 ConfState::nodes(int index) const {
+  // @@protoc_insertion_point(field_get:raftpb.ConfState.nodes)
+  return nodes_.Get(index);
 }
-inline void ConfState::set_voters(int index, ::google::protobuf::uint64 value) {
-  voters_.Set(index, value);
-  // @@protoc_insertion_point(field_set:raftpb.ConfState.voters)
+inline void ConfState::set_nodes(int index, ::google::protobuf::uint64 value) {
+  nodes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:raftpb.ConfState.nodes)
 }
-inline void ConfState::add_voters(::google::protobuf::uint64 value) {
-  voters_.Add(value);
-  // @@protoc_insertion_point(field_add:raftpb.ConfState.voters)
+inline void ConfState::add_nodes(::google::protobuf::uint64 value) {
+  nodes_.Add(value);
+  // @@protoc_insertion_point(field_add:raftpb.ConfState.nodes)
 }
 inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
-ConfState::voters() const {
-  // @@protoc_insertion_point(field_list:raftpb.ConfState.voters)
-  return voters_;
+ConfState::nodes() const {
+  // @@protoc_insertion_point(field_list:raftpb.ConfState.nodes)
+  return nodes_;
 }
 inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
-ConfState::mutable_voters() {
-  // @@protoc_insertion_point(field_mutable_list:raftpb.ConfState.voters)
-  return &voters_;
+ConfState::mutable_nodes() {
+  // @@protoc_insertion_point(field_mutable_list:raftpb.ConfState.nodes)
+  return &nodes_;
 }
 
 // repeated uint64 learners = 2;
@@ -2616,28 +2616,28 @@ inline void ConfChange::set_type(::raftpb::ConfChangeType value) {
   // @@protoc_insertion_point(field_set:raftpb.ConfChange.type)
 }
 
-// optional uint64 node_id = 3;
-inline bool ConfChange::has_node_id() const {
+// optional uint64 nodeid = 3;
+inline bool ConfChange::has_nodeid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void ConfChange::set_has_node_id() {
+inline void ConfChange::set_has_nodeid() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void ConfChange::clear_has_node_id() {
+inline void ConfChange::clear_has_nodeid() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void ConfChange::clear_node_id() {
-  node_id_ = GOOGLE_ULONGLONG(0);
-  clear_has_node_id();
+inline void ConfChange::clear_nodeid() {
+  nodeid_ = GOOGLE_ULONGLONG(0);
+  clear_has_nodeid();
 }
-inline ::google::protobuf::uint64 ConfChange::node_id() const {
-  // @@protoc_insertion_point(field_get:raftpb.ConfChange.node_id)
-  return node_id_;
+inline ::google::protobuf::uint64 ConfChange::nodeid() const {
+  // @@protoc_insertion_point(field_get:raftpb.ConfChange.nodeid)
+  return nodeid_;
 }
-inline void ConfChange::set_node_id(::google::protobuf::uint64 value) {
-  set_has_node_id();
-  node_id_ = value;
-  // @@protoc_insertion_point(field_set:raftpb.ConfChange.node_id)
+inline void ConfChange::set_nodeid(::google::protobuf::uint64 value) {
+  set_has_nodeid();
+  nodeid_ = value;
+  // @@protoc_insertion_point(field_set:raftpb.ConfChange.nodeid)
 }
 
 // optional bytes context = 4;

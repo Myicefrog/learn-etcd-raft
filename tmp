@@ -1,0 +1,26 @@
+node-impl.cc: In member function ‘virtual void NodeImpl::Advance()’:
+node-impl.cc:110:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (i = 0; i < ready_.messages.size(); ++i) 
+                   ^
+node-impl.cc:114:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (i = 0; i < ready_.readStates.size(); ++i) 
+                   ^
+node-impl.cc: In member function ‘void NodeImpl::handleConfChange()’:
+node-impl.cc:277:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      for (j = 0; j < nodes.size(); ++j) 
+                    ^
+node-impl.cc: In function ‘Node* StartNode(const Config*, const std::vector<Peer>&)’:
+node-impl.cc:387:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (i = 0; i < peers.size(); ++i) 
+                   ^
+node-impl.cc:421:19: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+     for (i = 0; i < peers.size(); ++i) 
+                   ^
+raft.o: In function `raft::becomeLeader()':
+raft.cc:(.text+0x2b5e): undefined reference to `numOfPendingConf(std::vector<raftpb::Entry, std::allocator<raftpb::Entry> > const&)'
+raft.o: In function `raft::step(raftpb::Message const&)':
+raft.cc:(.text+0x388c): undefined reference to `numOfPendingConf(std::vector<raftpb::Entry, std::allocator<raftpb::Entry> > const&)'
+main.o: In function `main':
+main.cc:(.text+0xf): undefined reference to `IsLocalMsg(raftpb::MessageType)'
+collect2: error: ld returned 1 exit status
+make: *** [raft] Error 1

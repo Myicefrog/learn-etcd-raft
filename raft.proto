@@ -76,7 +76,7 @@ enum ConfChangeTransition {
 }
 
 message ConfState {
-    repeated uint64 voters = 1;
+    repeated uint64 nodes = 1;
     repeated uint64 learners          = 2;
     repeated uint64 voters_outgoing   = 3;
     repeated uint64 learners_next     = 4;
@@ -93,7 +93,7 @@ enum ConfChangeType {
 message ConfChange {
   optional uint64          id      = 1;
   optional ConfChangeType  type    = 2;
-  optional uint64          node_id  = 3;
+  optional uint64          nodeid  = 3;
   optional bytes           context = 4;
 }
 
